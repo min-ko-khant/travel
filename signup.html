@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            /* background-color: #721c47; */
+            background-image: url(./img/myanmar.jpg);
+            background-position: center center;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .welcome-panel {
+            background-image: url(./img/02.jpg);
+            background-position: center center;
+            background-size: cover;
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .welcome-panel h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .welcome-panel p {
+            font-size: 0.9rem;
+            max-width: 250px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .toggle-container {
+            background-color: white;
+            border-radius: 30px;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 120px;
+            gap: 5px;
+        }
+
+        .toggle-btn {
+            border: none;
+            background: none;
+            padding: 8px 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+
+        .toggle-btn.btn-login,
+        .toggle-btn.btn-signin {
+            background-color: #b83b6f;
+            color: white;
+            width: 100%;
+        }
+
+        .toggle-btn.btn-login:active,
+        .toggle-btn.btn-signin:active {
+            background-color: #9c2a5c;
+            transition: 0.3 ease;
+            border: 1px solid #9c2a5c;
+            transform: scale(1.01);
+        }
+
+        .form-panel {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #fff;
+            align-items: center;
+            width: 100%;
+        }
+
+        .avatar-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #b83b6f, #862252);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 10px;
+            color: #fff;
+            font-size: 1.8rem;
+        }
+
+        .avatar-container h3 {
+            color: #721c47;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Form Inputs */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px 45px 15px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background-color: #fcfcfc;
+            font-size: 0.95rem;
+            outline: none;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+            transition: border 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #b83b6f;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        .submit-btn {
+            background: linear-gradient(90deg, #b83b6f, #9c2a5c);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(184, 59, 111, 0.3);
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.95;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: 4fr 5fr;
+                min-height: 500px;
+            }
+
+            .welcome-panel {
+                padding: 50px;
+            }
+
+            .toggle-container {
+                position: absolute;
+                right: -30px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 10;
+            }
+
+            .form-panel {
+                padding: 50px 50px 50px 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="welcome-panel">
+            <h2>WELCOME!</h2>
+            <p><strong>LOGIN</strong> and <strong>SIGN IN</strong> to securely access your account.</p>
+
+            <div class="toggle-container">
+                <a href="index.html"><button class="toggle-btn btn-login">LOGIN</button></a>
+                <a href="signup.html"><button class="toggle-btn btn-signin">SIGN IN</button></a>
+            </div>
+        </div>
+
+        <div class="form-panel">
+            <div class="avatar-container">
+                <div class="avatar">
+                    <img src="./img/user.png" alt="" width="50px">
+                </div>
+                <h3>SIGN IN</h3>
+            </div>
+
+            <form onsubmit="SignUp(event)">
+                <div class="input-group">
+                    <input type="text" placeholder="Full Name" required id="name">
+                </div>
+
+                <div class="input-group">
+                    <input type="email" placeholder="Email" required id="email">
+                </div>
+
+                <div class="input-group">
+                    <input type="password" placeholder="Password" required id="password">
+                </div>
+
+                <button type="submit" class="submit-btn">CREATE ACCOUNT</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function SignUp(event) {
+            event.preventDefault();
+            const entername = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const nameInput = "Web Developer";
+            const emailInput = "user@gmail.com";
+            const passwordInput = "123456";
+
+            if (entername === "" || email === "" || password === "") {
+                alert("ကျေးဇူးပြု၍ Email နှင့် Password ကို ဖြည့်စွက်ပေးပါ။");
+                return;
+            }
+
+            if (entername === nameInput && email === emailInput && password === passwordInput) {
+                alert("Login အောင်မြင်ပါသည်။ Main Page သို့ ရွှေ့ပြောင်းပေးနေပါသည်...");
+                window.location.href = "main.html";
+
+            } else {
+                alert("Email သို့မဟုတ် Password မှားယွင်းနေပါသည်။ ပြန်လည်ကြိုးစားကြည့်ပါ။");
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>
